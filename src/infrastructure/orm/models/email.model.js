@@ -61,7 +61,18 @@ const EmailModel = sequelize.define(
   },
   {
     timestamps: true,
-    underscored: true
+    underscored: true,
+    indexes: [
+      // Add index for created_at timestamp
+      {
+        fields: ['created_at']
+      },
+      // Optional: Add composite index if you frequently query by multiple fields together
+      {
+        fields: ['is_read', 'is_favourite', 'created_at'],
+        name: 'email_status_date_idx'
+      }
+    ]
   }
 );
 

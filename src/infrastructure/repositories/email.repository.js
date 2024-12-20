@@ -1,4 +1,5 @@
 const EmailModel = require('../orm/models/email.model');
+const { sequelize } = require('../../../configs');
 
 class EmailRepository {
   async findById(id) {
@@ -11,7 +12,7 @@ class EmailRepository {
       where: { ...filters },
       offset: (pageNo - 1) * pageSize,
       limit: pageSize,
-      order: [['createdAt', 'DESC']]
+      order: [['created_at', 'DESC']]
     });
   }
   /**
