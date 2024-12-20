@@ -65,20 +65,11 @@ async function updateSpecificEmail(req, res, next) {
   try {
     const updateEmailUC = new UpdateEmailUseCase(emailRepository);
     const result = await updateEmailUC.execute(req.params.id, req.body);
-    console.log('updateSpecificEmail', result);
-    if (result[1] > 0) {
-      res.status(200).json({
-        status: true,
-        result: result[1],
-        message: 'Emails Updated'
-      });
-    } else {
-      res.status(404).json({
-        status: false,
-        error: 'No records updated',
-        errroDetails: ''
-      });
-    }
+    res.status(200).json({
+      status: true,
+      result: result,
+      message: 'Emails Updated'
+    });
   } catch (err) {
     console.log('Error', err.message);
     const error = new Error(err.message);

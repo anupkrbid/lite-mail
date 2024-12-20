@@ -22,10 +22,21 @@ class EmailRepository {
    * @returns {Promise} The updated user instance or null if the user was not found.
    */
   async patchById(id, fieldsToUpdate) {
-    return await EmailModel.update(fieldsToUpdate, {
-      where: { id },
-      validate: true,
-      returning: true
+    // return await EmailModel.update(fieldsToUpdate, {
+    //   where: { id },
+    //   validate: true,
+    //   returning: true
+    // });
+    return await sequelize.transaction(async (t) => {
+      // Update the record
+      await EmailModel.update(fieldsToUpdate, {
+        where: { id },
+        validate: true,
+        transaction: t
+      });
+
+      // Fetch the updated record
+      return await EmailModel.findByPk(id, { transaction: t });
     });
   }
 }

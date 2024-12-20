@@ -4,6 +4,7 @@
   "description": "A lite email client app like Outlook",
   "main": "index.js",
   "scripts": {
+    "start": "node ./src/presentation/server.js",
     "serve": "nodemon ./src/presentation/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
