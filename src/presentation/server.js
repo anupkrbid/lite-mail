@@ -3,7 +3,7 @@ const { sequelize, config } = require('../../configs');
 
 (async () => {
   try {
-    await sequelize.sync({ force: true });
+    await sequelize.sync();
 
     console.log('Database connected successfully.');
 
