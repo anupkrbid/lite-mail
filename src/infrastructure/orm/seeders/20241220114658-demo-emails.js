@@ -31,7 +31,11 @@ module.exports = {
         sender_email: randEmail({ firstName, lastName, nameSeparator: '.' }),
         subject: randCatchPhrase(),
         short_description: body.substring(0, 100) + '...',
-        body: body
+        body: body,
+        is_read: false,
+        is_favourite: false,
+        created_at: new Date(),
+        updated_at: new Date()
       };
     });
 
@@ -43,7 +47,7 @@ module.exports = {
         emailBatch.push(fakeEmails[j]);
       }
 
-      await queryInterface.bulkInsert('emails', emailBatch, {});
+      await queryInterface.bulkInsert('emails', emailBatch);
     }
   },
 

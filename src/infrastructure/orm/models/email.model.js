@@ -53,7 +53,7 @@ const EmailModel = sequelize.define(
       defaultValue: false,
       allowNull: false
     },
-    isFavorite: {
+    isFavourite: {
       type: Sequelize.BOOLEAN,
       defaultValue: false,
       allowNull: false
