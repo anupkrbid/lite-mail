@@ -27,10 +27,10 @@ module.exports = {
       const lastName = randLastName();
       const body = randParagraph({ length: 10 }).join(' ');
       return {
-        senderName: `${firstName} ${lastName}`,
-        senderEmail: randEmail({ firstName, lastName, nameSeparator: '.' }),
+        sender_name: `${firstName} ${lastName}`,
+        sender_email: randEmail({ firstName, lastName, nameSeparator: '.' }),
         subject: randCatchPhrase(),
-        shortDescription: body.substring(0, 100) + '...',
+        short_description: body.substring(0, 100) + '...',
         body: body
       };
     });
@@ -43,7 +43,7 @@ module.exports = {
         emailBatch.push(fakeEmails[j]);
       }
 
-      await queryInterface.bulkInsert('Email', emailBatch, {});
+      await queryInterface.bulkInsert('emails', emailBatch, {});
     }
   },
 
@@ -54,6 +54,6 @@ module.exports = {
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
-    await queryInterface.bulkDelete('Email', null, {});
+    await queryInterface.bulkDelete('emails', null, {});
   }
 };
